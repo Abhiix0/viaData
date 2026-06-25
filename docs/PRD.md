@@ -1,227 +1,361 @@
 # ViaData
 
-### Multi-Database Analytics Platform
+## Modern Analytics Engineering Laboratory
 
-| Field            | Value                                                            |
-| ---------------- | ---------------------------------------------------------------- |
-| **Project Name** | ViaData                                                          |
-| **Version**      | v1.0                                                             |
-| **Status**       | Planning                                                         |
-| **Duration**     | 8 Weeks                                                          |
-| **Dataset**      | Olist Brazilian E-Commerce Dataset                               |
-| **Category**     | Data Engineering / Analytics Engineering / Data Warehousing / BI |
+**Version:** v1.0
+**Status:** Planning
+**Duration:** 8-10 Weeks
+**Dataset:** Olist Brazilian E-Commerce Dataset
 
 ---
 
-# 1. Problem Statement
+# 1. Executive Summary
 
-Most data engineering learners study databases in isolation.
+ViaData is a hands-on analytics engineering laboratory designed to develop practical experience across multiple database technologies and modern data platform concepts.
 
-They learn MySQL schemas, PostgreSQL queries, Snowflake warehouses, or BigQuery analytics independently, but rarely understand how these systems interact inside a real enterprise architecture.
+Rather than treating databases as interchangeable storage systems, ViaData assigns a dedicated responsibility to each technology:
 
-**ViaData** solves this problem by simulating a complete enterprise analytics platform where each database serves a distinct business purpose, closely resembling modern production data ecosystems.
+| Technology      | Learning Focus                       |
+| --------------- | ------------------------------------ |
+| MySQL           | Database Engineering & OLTP          |
+| PostgreSQL      | Analytics Engineering & Advanced SQL |
+| Snowflake       | Data Warehousing                     |
+| BigQuery        | Large-Scale Analytics                |
+| Power BI        | Business Intelligence                |
+| Python + Polars | Data Engineering & ETL               |
+
+The project uses a single business domain (e-commerce) while exploring how different platforms solve different categories of problems.
+
+The primary objective is learning architecture patterns, SQL mastery, warehouse modeling, pipeline development, and analytical thinking.
 
 ---
 
 # 2. Project Vision
 
-Build an end-to-end analytics platform that moves data through four specialized database systems, each optimized for a specific stage of the analytics lifecycle.
+Modern data professionals rarely work with a single technology.
+
+A strong analytics engineer understands:
+
+* Operational databases
+* Data transformation workflows
+* Data warehouse design
+* Analytical modeling
+* Business intelligence systems
+* Data quality processes
+* Pipeline automation
+
+ViaData is designed as a structured learning environment where each layer teaches a specific discipline while contributing to a complete analytics platform.
+
+---
+
+# 3. Learning Objectives
+
+## MySQL
+
+Learn:
+
+* Relational schema design
+* Normalization
+* Foreign key constraints
+* Indexing strategies
+* Query optimization
+* Transactions
+* EXPLAIN plans
+* OLTP concepts
+
+---
+
+## PostgreSQL
+
+Learn:
+
+* Advanced SQL
+* Common Table Expressions
+* Window Functions
+* Materialized Views
+* Business metric modeling
+* Analytical SQL patterns
+
+Required concepts:
+
+* CTE
+* Window Functions
+* LEAD
+* LAG
+* RANK
+* DENSE_RANK
+* PARTITION BY
+* Materialized Views
+
+---
+
+## Snowflake
+
+Learn:
+
+* Dimensional modeling
+* Star schema design
+* Fact tables
+* Dimension tables
+* Warehouse loading
+* Clustering concepts
+* Historical storage patterns
+
+---
+
+## BigQuery
+
+Learn:
+
+* Analytical datasets
+* Cohort analysis
+* Retention analysis
+* Customer lifetime value
+* Query optimization
+* Partitioning
+* Clustering
+* Cost-aware analytics
+
+---
+
+## Data Engineering
+
+Learn:
+
+* ETL pipelines
+* Incremental loading
+* Data validation
+* Metadata tracking
+* Logging
+* Pipeline monitoring
+* Error handling
+
+---
+
+## Analytics Engineering
+
+Learn:
+
+* Metric layer design
+* Reusable transformations
+* Business logic abstraction
+* Data quality testing
+* Documentation practices
+
+---
+
+# 4. Dataset Analysis
+
+## Source Dataset
+
+Olist Brazilian E-Commerce Dataset
+
+## Core Tables
+
+* customers
+* orders
+* order_items
+* payments
+* reviews
+* products
+* sellers
+* geolocation
+* product_category_translation
+
+Dataset Size:
+
+* ~100k Orders
+* ~100k Customers
+* ~112k Order Items
+* ~103k Payments
+* ~99k Reviews
+* ~33k Products
+* ~3k Sellers
+* ~1M Geolocation Records
+
+---
+
+# 5. Architecture
+
+## High-Level Architecture
 
 ```text
+Olist Dataset
+       │
+       ▼
+
 MySQL
-   ↓
+(Database Engineering Lab)
+
+       ▼
+
+Python + Polars ETL
+
+       ▼
+
 PostgreSQL
-   ↓
+(SQL & Transformation Lab)
+
+       ▼
+
 Snowflake
-   ↓
+(Data Warehouse Lab)
+
+       ▼
+
 BigQuery
-   ↓
+(Analytics Lab)
+
+       ▼
+
 Power BI
+(Business Intelligence)
 ```
 
-### Platform Responsibilities
-
-| Layer      | Responsibility                        |
-| ---------- | ------------------------------------- |
-| MySQL      | Operational Source of Truth (OLTP)    |
-| PostgreSQL | Business Transformation Layer         |
-| Snowflake  | Enterprise Data Warehouse             |
-| BigQuery   | Advanced Analytics Layer              |
-| Power BI   | Business Intelligence & Visualization |
-
-The system should behave as a connected data platform rather than a collection of independent database exercises.
-
 ---
 
-# 3. Target Users
+# 6. Layer Responsibilities
 
-| User Type         | Context                                                  |
-| ----------------- | -------------------------------------------------------- |
-| Primary Developer | Abhi (B.Tech Data Science, Year 2)                       |
-| Audience          | Recruiters, Internship Interviewers, Portfolio Reviewers |
-| Goal              | Demonstrate end-to-end Data Engineering capability       |
+## Layer 1: MySQL
 
----
+### Purpose
 
-# 4. Dataset
+Database Engineering Laboratory
 
-**Source:** Olist Brazilian E-Commerce Dataset (Kaggle)
+### Responsibilities
 
-## Dataset Tables
-
-| Table                        | Approximate Rows |
-| ---------------------------- | ---------------- |
-| customers                    | ~100,000         |
-| orders                       | ~100,000         |
-| order_items                  | ~112,000         |
-| payments                     | ~103,000         |
-| reviews                      | ~99,000          |
-| products                     | ~33,000          |
-| sellers                      | ~3,000           |
-| geolocation                  | ~1,000,000       |
-| product_category_translation | Reference Table  |
-
----
-
-# 5. Functional Requirements
-
----
-
-## Layer 1: MySQL (Operational Database)
-
-### Objectives
-
-* Load all source tables into a normalized relational schema
-* Define Primary Key and Foreign Key constraints
-* Implement indexing strategy
-* Support transactional and operational workloads
-* Measure query performance
+* Store normalized source data
+* Implement constraints
+* Implement indexing
+* Analyze query performance
+* Simulate operational workloads
 
 ### Deliverables
 
-* Entity Relationship Diagram (ERD)
-* Schema Creation Scripts
-* Index Documentation
+* ER Diagram
+* Schema Scripts
+* Index Strategy
 * Query Benchmark Report
 
 ### Success Criteria
 
-* All source tables loaded successfully
-* Referential integrity enforced
-* Queries optimized using indexes
+* Fully normalized schema
+* Proper FK relationships
+* Optimized indexes
+* Performance benchmarks documented
 
 ---
 
-## Layer 2: PostgreSQL (Transformation Layer)
+## Layer 2: Python + Polars ETL
 
-### Objectives
+### Purpose
 
-Extract data from MySQL and create reusable business models.
+Data Engineering Laboratory
 
-### Metric Tables
+### Responsibilities
 
-```sql
-customer_metrics
-seller_metrics
-product_metrics
-delivery_metrics
-revenue_metrics
-```
+* Data extraction
+* Validation
+* Transformation
+* Loading
+* Metadata tracking
 
-### Advanced SQL Requirements
+### Features
 
-Implement at least:
-
-* 15+ SQL transformations
-* Common Table Expressions (CTEs)
-* Window Functions
-
-  * LEAD()
-  * LAG()
-  * RANK()
-  * DENSE_RANK()
-* Aggregation pipelines
-
-### Materialized Views
-
-Create at least five reusable analytical views.
+* Full Loads
+* Incremental Loads
+* Watermark Tracking
+* Error Handling
+* Retry Logic
 
 ### Deliverables
 
-* Transformation SQL Library
-* Metrics Catalog
-* Materialized Views
-
-### Success Criteria
-
-* All business metrics validated
-* Materialized views refresh successfully
+* ETL Framework
+* Validation Engine
+* Metadata Tracking Tables
 
 ---
 
-## Layer 3: Snowflake (Enterprise Warehouse)
+## Layer 3: PostgreSQL
 
-### Objectives
+### Purpose
 
-Design and implement a dimensional warehouse.
+Analytics Engineering Laboratory
+
+### Responsibilities
+
+* Build business metrics
+* Create analytical datasets
+* Implement advanced SQL patterns
+
+### Output Models
+
+* customer_metrics
+* seller_metrics
+* product_metrics
+* delivery_metrics
+* revenue_metrics
+
+### Required Deliverables
+
+* 15+ SQL transformations
+* 5+ Materialized Views
+* Metrics Catalog
+* SQL Library
+
+---
+
+## Layer 4: Snowflake
+
+### Purpose
+
+Data Warehouse Laboratory
+
+### Responsibilities
+
+* Historical storage
+* Reporting optimization
+* Dimensional modeling
 
 ### Fact Tables
 
-```sql
-fact_orders
-fact_order_items
-fact_payments
-fact_reviews
-```
+* fact_orders
+* fact_order_items
+* fact_payments
+* fact_reviews
 
 ### Dimension Tables
 
-```sql
-dim_customer
-dim_product
-dim_seller
-dim_date
-dim_location
-dim_payment
-```
+* dim_customer
+* dim_product
+* dim_seller
+* dim_date
+* dim_location
 
 ### Deliverables
 
-* Star Schema Design
-* Warehouse DDL Scripts
-* Data Load Scripts
+* Star Schema
 * Warehouse Documentation
-
-### Success Criteria
-
-* Fact tables populated correctly
-* Dimensions fully connected
-* Star schema validated
+* Load Scripts
 
 ---
 
-## Layer 4: BigQuery (Analytics Layer)
+## Layer 5: BigQuery
 
-### Objectives
+### Purpose
 
-Build enterprise analytics models.
+Advanced Analytics Laboratory
 
-### Required Analytical Models
+### Analytical Models
 
-* Customer Lifetime Value (CLV)
+* Customer Lifetime Value
 * Cohort Analysis
 * Retention Analysis
 * Revenue Trends
 * Product Trends
 * Seller Rankings
 * Geographic Performance
-* Delivery Performance
-
-### Optimization Requirements
-
-* Partitioning
-* Clustering
-* Query Cost Optimization
+* Delivery Analytics
 
 ### Deliverables
 
@@ -229,132 +363,109 @@ Build enterprise analytics models.
 * Analytical Datasets
 * KPI Documentation
 
-### Success Criteria
-
-* All analytical models validated
-* Optimized query performance
-
 ---
 
-## Layer 5: Power BI (Visualization Layer)
-
-### Objectives
-
-Build production-quality dashboards.
-
-### Dashboards
-
-| Dashboard               | Focus Area               |
-| ----------------------- | ------------------------ |
-| Executive Overview      | Revenue, Orders, Growth  |
-| Customer Intelligence   | CLV, Retention, Segments |
-| Seller Intelligence     | Revenue, Ratings, Growth |
-| Product Intelligence    | Products, Categories     |
-| Geographic Intelligence | Revenue by Region        |
-
-### Success Criteria
-
-* Business questions answerable visually
-* KPIs clearly represented
-
----
-
-# 6. ETL Requirements
-
-## Pipeline Flow
-
-```text
-Extract
-   ↓
-Validate
-   ↓
-Transform
-   ↓
-Load
-   ↓
-Monitor
-```
-
----
-
-## Incremental Loading Strategy
-
-| Property        | Detail                   |
-| --------------- | ------------------------ |
-| First Run       | Full Historical Load     |
-| Subsequent Runs | Incremental Loads        |
-| Tracking Column | order_purchase_timestamp |
-| Metadata Table  | etl_watermarks           |
-
-### Watermark Table Structure
-
-```sql
-pipeline_name
-last_processed_timestamp
-```
-
-### Goal
-
-Prevent unnecessary full reloads and simulate real-world ingestion pipelines.
-
----
-
-# 7. Data Quality Requirements
+# 7. Data Quality Framework
 
 ## Validation Rules
 
-| Entity    | Validation Rule                      |
-| --------- | ------------------------------------ |
-| Orders    | Unique order_id and valid timestamps |
-| Customers | Non-null customer IDs                |
-| Payments  | payment_value > 0                    |
-| Reviews   | review_score BETWEEN 1 AND 5         |
+### Orders
 
----
+* Unique order_id
+* Valid timestamps
 
-## Quality Tables
+### Customers
+
+* Non-null customer_id
+
+### Payments
+
+* payment_value > 0
+
+### Reviews
+
+* review_score between 1 and 5
+
+## Tables
 
 ### data_quality_log
 
-Stores validation results.
+Tracks validation failures.
 
 ### failed_records
 
-Stores rejected records for investigation.
+Stores rejected records.
 
-### Enforcement Policy
+### Success Criteria
 
-Critical validation failures immediately stop pipeline execution.
-
----
-
-# 8. Monitoring Requirements
-
-## etl_runs
-
-| Column           | Description                  |
-| ---------------- | ---------------------------- |
-| run_id           | Unique pipeline execution ID |
-| start_time       | Pipeline start timestamp     |
-| end_time         | Pipeline end timestamp       |
-| status           | Success / Failure            |
-| rows_processed   | Number of processed rows     |
-| duration_seconds | Total execution duration     |
+Critical validation failures stop pipeline execution.
 
 ---
 
-## pipeline_logs
+# 8. Incremental Loading Strategy
 
-| Column    | Description      |
-| --------- | ---------------- |
-| stage     | Pipeline stage   |
-| status    | Execution status |
-| message   | Log message      |
-| timestamp | Event timestamp  |
+## Initial Run
+
+Full Historical Load
+
+## Incremental Runs
+
+Watermark Based Loading
+
+### Metadata Table
+
+etl_watermarks
+
+Columns:
+
+* pipeline_name
+* last_processed_timestamp
+
+### Late Arriving Data Strategy
+
+Overlap Window:
+
+```text
+Reload Previous 3 Days
+Deduplicate Records
+```
+
+Purpose:
+
+* Capture delayed records
+* Simulate real-world ingestion patterns
 
 ---
 
-# 9. KPI Catalog
+# 9. Monitoring & Observability
+
+## Pipeline Metrics
+
+* Rows Processed
+* Rows Inserted
+* Rows Updated
+* Rows Failed
+* Runtime Duration
+* Pipeline Status
+* Data Freshness
+
+## Tables
+
+### etl_runs
+
+Stores execution history.
+
+### pipeline_logs
+
+Stores detailed execution logs.
+
+### pipeline_metrics
+
+Stores operational metrics.
+
+---
+
+# 10. KPI Catalog
 
 ## Revenue KPIs
 
@@ -362,130 +473,145 @@ Critical validation failures immediately stop pipeline execution.
 * Average Order Value
 * Monthly Revenue
 * Revenue Growth Rate
-* Revenue by Category
-* Revenue by Seller
-
----
 
 ## Customer KPIs
 
 * Customer Lifetime Value
-* Repeat Purchase Rate
 * Retention Rate
+* Repeat Purchase Rate
 * Average Customer Spend
-* Orders per Customer
-
----
 
 ## Seller KPIs
 
-* Revenue per Seller
-* Orders per Seller
-* Average Seller Rating
+* Revenue Per Seller
 * Seller Growth Rate
-
----
-
-## Delivery KPIs
-
-* Average Delivery Time
-* Late Delivery Percentage
-* Average Freight Cost
-
----
+* Seller Rating
 
 ## Product KPIs
 
 * Units Sold
-* Revenue per Product
-* Revenue per Category
+* Revenue Per Product
 * Category Growth Rate
 
----
+## Delivery KPIs
 
-# 10. Non-Functional Requirements
-
-| Requirement         | Target                                        |
-| ------------------- | --------------------------------------------- |
-| Reproducibility     | Complete rebuild from raw CSV files           |
-| Portability         | Config-driven connections                     |
-| Testability         | Unit and Integration Tests                    |
-| Documentation       | Complete architecture and model documentation |
-| Interview Readiness | Architecture explainable under pressure       |
+* Delivery Time
+* Late Delivery %
+* Freight Cost
 
 ---
 
-# 11. Technology Stack
+# 11. Dashboards
 
-| Layer                | Technology                 |
-| -------------------- | -------------------------- |
-| Language             | Python 3.12+               |
-| ORM / Database       | SQLAlchemy                 |
-| MySQL Connector      | PyMySQL                    |
-| PostgreSQL Connector | psycopg2-binary            |
-| Snowflake Connector  | snowflake-connector-python |
-| BigQuery Connector   | google-cloud-bigquery      |
-| Data Processing      | pandas, pyarrow            |
-| Configuration        | python-dotenv              |
-| Visualization        | Power BI                   |
-| Package Management   | uv                         |
+## Executive Dashboard
 
----
+Business Health Overview
 
-# 12. Development Roadmap
+## Customer Dashboard
 
-| Phase | Name                            | Key Outputs                                           | Exit Condition              |
-| ----- | ------------------------------- | ----------------------------------------------------- | --------------------------- |
-| 1     | Data Understanding & Modeling   | Profiling, Data Dictionary, ERD, Architecture Diagram | Dataset fully understood    |
-| 2     | MySQL Operational Layer         | Schema, Constraints, Indexes, Benchmarks              | Source system operational   |
-| 3     | PostgreSQL Transformation Layer | Metrics, Views, Advanced SQL                          | Metrics validated           |
-| 4     | ETL Engine                      | Watermarks, Logging, Incremental Loads                | End-to-End Pipeline Working |
-| 5     | Snowflake Warehouse             | Star Schema, Facts, Dimensions                        | Warehouse populated         |
-| 6     | BigQuery Analytics              | CLV, Cohorts, Retention Models                        | Analytics validated         |
-| 7     | Power BI Dashboards             | 5 Production Dashboards                               | Business insights available |
-| 8     | Production Hardening            | Testing, Optimization, Documentation                  | Interview Ready             |
+CLV, Retention, Segmentation
+
+## Seller Dashboard
+
+Revenue, Ratings, Growth
+
+## Product Dashboard
+
+Performance, Trends, Categories
+
+## Geographic Dashboard
+
+Revenue & Delivery Analysis
 
 ---
 
-# 13. Success Criteria
-
-The project is considered complete when:
-
-* [ ] MySQL operational layer is fully functional
-* [ ] PostgreSQL transformation layer is implemented
-* [ ] Snowflake warehouse is populated
-* [ ] BigQuery analytical models are validated
-* [ ] Incremental ETL loading works correctly
-* [ ] Data quality checks are enforced and blocking
-* [ ] Monitoring and logging are operational
-* [ ] Five Power BI dashboards answer defined business questions
-* [ ] Full architecture can be confidently explained during technical interviews
-* [ ] Project is portfolio-ready and production-style
-
----
-
-# 14. Final Architecture
+# 12. Repository Structure
 
 ```text
-                   Olist Dataset (CSV)
-                            │
-                            ▼
-                   MySQL (Operational)
-                            │
-                            ▼
-               PostgreSQL (Transformations)
-                            │
-                            ▼
-                 Snowflake (Warehouse)
-                            │
-                            ▼
-                 BigQuery (Analytics)
-                            │
-                            ▼
-                   Power BI Dashboards
+via-data/
+
+data/
+
+mysql/
+postgres/
+snowflake/
+bigquery/
+
+pipelines/
+  extract/
+  transform/
+  load/
+
+monitoring/
+tests/
+dashboards/
+docs/
+
+README.md
 ```
 
-### Core Principle
+---
 
-> Each database exists for a specific reason.
-> The goal of ViaData is not to store data in multiple systems, but to demonstrate how modern enterprise data platforms move, transform, warehouse, analyze, and visualize data across specialized layers.
+# 13. Roadmap
+
+## Phase 1
+
+Data Profiling & Modeling
+
+## Phase 2
+
+MySQL Database Engineering
+
+## Phase 3
+
+Python ETL Framework
+
+## Phase 4
+
+PostgreSQL Analytics Engineering
+
+## Phase 5
+
+Snowflake Data Warehouse
+
+## Phase 6
+
+BigQuery Analytics
+
+## Phase 7
+
+Power BI Dashboards
+
+## Phase 8
+
+Testing & Production Hardening
+
+---
+
+# 14. Final Success Metrics
+
+Project is complete when:
+
+* All database layers operational
+* ETL framework functioning
+* Incremental loading implemented
+* Data quality checks enforced
+* Star schema implemented
+* Analytical models validated
+* Dashboards answer business questions
+* Architecture fully documented
+* All technologies can be explained confidently during interviews
+
+---
+
+# Final Outcome
+
+ViaData becomes a complete Analytics Engineering Laboratory demonstrating practical experience in:
+
+* Database Engineering
+* Data Engineering
+* Analytics Engineering
+* Data Warehousing
+* Business Intelligence
+
+while providing hands-on exposure to MySQL, PostgreSQL, Snowflake, BigQuery, Power BI, and modern ETL practices.
